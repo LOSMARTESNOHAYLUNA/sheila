@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LMNHL — Plan de Contenidos 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,system-ui,sans-serif;background:#f4f0fa;color:#2a1f38;min-height:100vh}
+.hdr{background:#3a1c57;padding:16px 20px 0;position:sticky;top:0;z-index:50}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.hdr-eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#87B229;font-weight:700;margin-bottom:3px}
+.hdr-title{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.hdr-stats{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-n{font-size:17px;font-weight:700;line-height:1}
+.stat-l{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px}
+.save-badge{font-size:9px;padding:3px 10px;border-radius:10px;letter-spacing:.06em;background:rgba(255,255,255,.08)}
+.tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:10px 14px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.tab.on{color:#87B229;border-bottom-color:#87B229}
+.prog{height:3px;background:rgba(0,0,0,.1)}
+.prog-bar{height:3px;background:#87B229;transition:width .4s}
+.body{padding:20px;max-width:1400px;margin:0 auto}
+.mth-hd{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.mth-accent{width:4px;height:30px;background:#87B229;border-radius:2px;flex-shrink:0}
+.mth-name{font-size:16px;font-weight:700;color:#582D81;letter-spacing:-.02em}
+.mth-sub{font-size:9px;color:#7a6f85;letter-spacing:.08em;margin-top:2px}
+.week{border:0.5px solid rgba(88,45,129,.12);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:10px}
+.week-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;border:none;background:none;width:100%;font-family:inherit;gap:10px;transition:background .2s}
+.week-hdr:hover{background:#f4f0fa}
+.week-hdr.on{background:#582D81}
+.wk-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wk-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2a1f38}
+.week-hdr.on .wk-label{color:#fff}
+.wk-badges{display:flex;gap:5px;flex-wrap:wrap}
+.wbadge{font-size:8px;padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:.06em}
+.wbadge.apr{background:#dcfce7;color:#166534}
+.wbadge.rev{background:#fef9c3;color:#92400e}
+.wbadge.tot{background:#f4f0fa;color:#7a6f85}
+.week-hdr.on .wbadge.tot{background:rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
+.wk-arrow{font-size:10px;color:#7a6f85;transition:transform .25s;flex-shrink:0}
+.week-hdr.on .wk-arrow{color:rgba(255,255,255,.5);transform:rotate(180deg)}
+.week-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;border-top:0.5px solid rgba(88,45,129,.12)}
+.platform{display:flex;flex-direction:column;gap:10px}
+.plat-hdr{display:flex;align-items:center;gap:7px;padding-bottom:10px;border-bottom:2px solid #e72078}
+.plat-hdr.li{border-bottom-color:#582D81}
+.plat-name{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#e72078}
+.plat-hdr.li .plat-name{color:#582D81}
+.plat-count{font-size:8px;color:#7a6f85;margin-left:auto;letter-spacing:.06em}
+.card{background:#fff;border:0.5px solid rgba(88,45,129,.12);border-radius:8px;border-left:3px solid #ccc;padding:12px 14px;display:flex;flex-direction:column;gap:9px}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-badges{display:flex;flex-direction:column;gap:3px}
+.type-badge{display:inline-block;font-size:8px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:2px 7px;border-radius:3px;align-self:flex-start}
+.pillar-tag{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#7a6f85;font-weight:500}
+.st-btn{font-size:8px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:12px;cursor:pointer;border:0.5px solid;white-space:nowrap;flex-shrink:0;font-family:inherit;transition:all .15s}
+.topic-hint{font-size:8px;color:#7a6f85;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase}
+.topic-input{width:100%;padding:7px 10px;border:0.5px solid rgba(88,45,129,.15);border-radius:5px;font-family:inherit;font-size:10px;font-weight:500;color:#2a1f38;line-height:1.5;outline:none;background:#f4f0fa;transition:border-color .2s}
+.topic-input:focus{border-color:#582D81;background:#fff}
+.post-textarea{width:100%;min-height:72px;padding:8px 10px;border:0.5px solid rgba(88,45,129,.12);border-radius:5px;font-family:inherit;font-size:10px;color:#2a1f38;line-height:1.6;resize:vertical;outline:none;background:#fff;transition:border-color .2s}
+.post-textarea:focus{border-color:#582D81}
+.post-textarea::placeholder{color:#aaa;font-size:9px}
+.date-label{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#7a6f85;margin-bottom:3px;display:block}
+.date-input{width:100%;padding:6px 10px;border:0.5px solid rgba(88,45,129,.12);border-radius:5px;font-family:inherit;font-size:9px;color:#2a1f38;outline:none;background:#fff;transition:border-color .2s}
+.date-input:focus{border-color:#e72078}
+.link-input{width:100%;padding:6px 10px;border:0.5px solid rgba(88,45,129,.12);border-radius:5px;font-family:inherit;font-size:9px;color:#7a6f85;outline:none;background:#fff;transition:border-color .2s}
+.link-input:focus{border-color:#87B229}
+.link-input::placeholder{color:#bbb}
+.card-footer{display:flex;justify-content:flex-end}
+.del-btn{font-size:8px;color:#ddd;background:none;border:none;cursor:pointer;font-family:inherit;letter-spacing:.06em;padding:2px 4px;transition:color .15s}
+.del-btn:hover{color:#e72078}
+.add-post-wrap{position:relative;margin-top:2px}
+.add-post-btn{display:flex;align-items:center;gap:7px;width:100%;padding:9px 12px;border:1px dashed rgba(88,45,129,.2);border-radius:7px;background:none;cursor:pointer;font-family:inherit;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#582D81;transition:all .2s}
+.add-post-btn:hover{background:#ede8f7;border-color:#582D81}
+.add-post-btn.ig{color:#b5005a;border-color:rgba(231,32,120,.2)}
+.add-post-btn.ig:hover{background:#fce7f3;border-color:#e72078}
+.add-icon{width:18px;height:18px;border-radius:50%;background:#582D81;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;line-height:1}
+.add-post-btn.ig .add-icon{background:#e72078}
+.dropdown{position:absolute;bottom:calc(100% + 6px);left:0;z-index:200;background:#fff;border:0.5px solid rgba(88,45,129,.2);border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,.13);min-width:190px;overflow:hidden}
+.dropdown.right{left:auto;right:0}
+.dd-title{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#7a6f85;padding:10px 14px 7px;border-bottom:0.5px solid rgba(88,45,129,.1)}
+.dd-opt{display:flex;align-items:center;gap:10px;width:100%;padding:9px 14px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:11px;font-weight:500;color:#2a1f38;text-align:left;transition:background .15s}
+.dd-opt:hover{background:#f4f0fa}
+.dd-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.footer{margin-top:24px;padding:14px 16px;background:#3a1c57;border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ft-l{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.ft-r{font-size:8px;color:#87B229;letter-spacing:.1em}
+@media(max-width:700px){.week-body{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+const {useState,useEffect,useRef,useCallback}=React;
+
+const MONTHS=[
+  {key:'2026-04',name:'Abril',weeks:['1–7 Abr','8–14 Abr','15–21 Abr','22–30 Abr']},
+  {key:'2026-05',name:'Mayo',weeks:['1–7 May','8–14 May','15–21 May','22–31 May']},
+  {key:'2026-06',name:'Junio',weeks:['1–7 Jun','8–14 Jun','15–21 Jun','22–30 Jun']},
+  {key:'2026-07',name:'Julio',weeks:['1–7 Jul','8–14 Jul','15–21 Jul','22–31 Jul']},
+  {key:'2026-08',name:'Agosto',weeks:['1–7 Ago','8–14 Ago','15–21 Ago','22–31 Ago']},
+  {key:'2026-09',name:'Sep',weeks:['1–7 Sep','8–14 Sep','15–21 Sep','22–30 Sep']},
+  {key:'2026-10',name:'Oct',weeks:['1–7 Oct','8–14 Oct','15–21 Oct','22–31 Oct']},
+  {key:'2026-11',name:'Nov',weeks:['1–7 Nov','8–14 Nov','15–21 Nov','22–30 Nov']},
+  {key:'2026-12',name:'Dic',weeks:['1–7 Dic','8–14 Dic','15–21 Dic','22–31 Dic']},
+];
+
+const TC={
+  reel:{label:'Reel',color:'#b5005a',bg:'#fce7f3',border:'#e72078'},
+  carrusel:{label:'Carrusel',color:'#3d6010',bg:'#edf7d4',border:'#87B229'},
+  reflexion:{label:'Reflexión + Foto',color:'#3a1c57',bg:'#ede8f7',border:'#582D81'},
+  post:{label:'Post',color:'#3a1c57',bg:'#ede8f7',border:'#582D81'},
+  autoridad:{label:'Autoridad',color:'#3a1c57',bg:'#ede8f7',border:'#582D81'},
+  estrategia:{label:'Estrategia',color:'#3d6010',bg:'#edf7d4',border:'#87B229'},
+  opinion:{label:'Opinión',color:'#b5005a',bg:'#fce7f3',border:'#e72078'},
+  historia:{label:'Historia',color:'#555',bg:'#f4f0fa',border:'#aaa'},
+};
+
+const SC={
+  pendiente:{label:'Pendiente',bg:'#f4f0fa',color:'#7a6f85',bc:'#ccc',next:'revision'},
+  revision:{label:'En revisión',bg:'#fffbeb',color:'#92400e',bc:'#fcd34d',next:'aprobado'},
+  aprobado:{label:'Aprobado',bg:'#f0fdf4',color:'#166534',bc:'#86efac',next:'pendiente'},
+};
+
+const ADD_TYPES=[
+  {type:'reel',label:'Reel',dot:'#e72078'},
+  {type:'carrusel',label:'Carrusel',dot:'#87B229'},
+  {type:'post',label:'Post',dot:'#582D81'},
+  {type:'historia',label:'Historia',dot:'#aaa'},
+];
+
+const PLAN={
+'2026-04':[
+  {ig:[
+    {type:'reel',topic:'¿Por qué el 80% de las PYMEs empieza su marketing por el tejado y no por los cimientos?',pillar:'Autoridad'},
+    {type:'carrusel',topic:'5 apps de IA que uso a diario en mi agencia — para qué sirve cada una',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Mis miedos no eran míos. Eran los de mi familia. Me costó años darme cuenta.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'La identidad visual no es decoración: es el cimiento de todo tu marketing digital'},
+    {type:'estrategia',topic:'Los 4 pasos obligatorios antes de abrir tus redes sociales que casi nadie sigue'},
+    {type:'opinion',topic:'No trabajo con clientes que llegan desde la desconfianza. Y lo defiendo con argumentos.'},
+    {type:'historia',topic:'De freelance sola a agencia de 8 personas en 3 años: lo que nadie cuenta desde fuera'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Qué es una sesión estratégica gratuita y por qué puede cambiarte la visión del negocio',pillar:'Servicios LMNHL'},
+    {type:'carrusel',topic:'ChatGPT vs Gemini vs Claude: cuál usar según el sector y tamaño de tu empresa',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Aprendí a delegar cuando acepté que no todo tiene que estar perfecto desde el día uno.',pillar:'Liderazgo'},
+  ],li:[
+    {type:'autoridad',topic:'10.000 seguidores falsos vs 50 clientes ideales: la matemática real del marketing'},
+    {type:'estrategia',topic:'Así es la sesión diagnóstico que hacemos en LMNHL antes de proponer nada'},
+    {type:'opinion',topic:'El marketing no da resultados milagrosos. Los da cuando se trabaja con método y paciencia.'},
+    {type:'historia',topic:'El día que decidí no dejar morir la empresa de mi padre — y lo que aprendí al hacerlo'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'3 señales de que tu empresa necesita una auditoría de marketing ahora mismo',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Productividad para CEOs: 7 procesos que puedes automatizar esta semana con IA',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'El gimnasio no es opcional. Es donde dejo de ser empresaria durante una hora.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'SEO Local para PYMEs: Google My Business es el primer paso y el más ignorado'},
+    {type:'estrategia',topic:'Combinar campañas de pago + SEO orgánico para reducir tu inversión a largo plazo'},
+    {type:'opinion',topic:'Una persona de marketing no puede saber de todo. Por eso existe el equipo especializado.'},
+    {type:'historia',topic:'Las creencias familiares que me frenaron en el negocio — y cómo las identifiqué y solté'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Qué hace una agencia boutique que no hace una agencia genérica — y por qué importa',pillar:'Identidad LMNHL'},
+    {type:'carrusel',topic:'De 0 a presencia digital: el roadmap exacto para una empresa que empieza',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'No soy otra persona. Soy la persona que no me dejaba salir. Esa es mi mayor evolución.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Los 3 errores más comunes de las PYMEs españolas al empezar con redes sociales'},
+    {type:'estrategia',topic:'Cómo preparamos el dossier diagnóstico y por qué marca la diferencia con otras agencias'},
+    {type:'opinion',topic:'Mi cliente ideal no es el que empieza de cero. Es el que ya lo intentó y se peleó con ello.'},
+    {type:'historia',topic:'Lo que significa triplicar la facturación en 3 años y lo que nadie ve desde fuera'},
+  ]},
+],'2026-05':[
+  {ig:[
+    {type:'reel',topic:'IA aplicada a tu negocio: por dónde empezar si no eres técnico ni quieres serlo',pillar:'IA & Productividad'},
+    {type:'carrusel',topic:'5 flujos de automatización para ahorrar 4 horas semanales sin saber programar',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'"Si viene, por algo viene." Me lo repetí muchas veces en los momentos más duros.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Qué es la consultoría de IA aplicada a negocio — y qué no es ni debería ser'},
+    {type:'estrategia',topic:'Cómo identificar qué procesos de tu empresa puede automatizar la IA hoy mismo'},
+    {type:'opinion',topic:'La IA no sustituye la estrategia. La multiplica. O la destroza. Depende de cómo se use.'},
+    {type:'historia',topic:'Por qué el diagnóstico siempre es humano aunque la solución sea tecnológica'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'El error de imagen corporativa que comete el 80% de las empresas sin saberlo',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Notion AI vs Canva IA vs Copy.ai: cuándo y para qué usar cada herramienta',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'La obsesión con el trabajo tiene un punto en que deja de ser virtud. Yo lo conocí.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Identidad visual vs presencia digital: son cosas distintas y tienen un orden diferente'},
+    {type:'estrategia',topic:'Por qué un logotipo hecho con IA puede estar saboteando tu marca sin que lo sepas'},
+    {type:'opinion',topic:'La marca personal del empresario ya no es opcional. Es el mayor diferenciador que existe.'},
+    {type:'historia',topic:'Cómo construí el equipo de LMNHL con cultura real y no solo con nómina'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Cómo detectar si una agencia de marketing te está vendiendo humo en 5 preguntas',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Métricas que importan vs métricas que engañan: guía honesta para directivos',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Aprender me parece ocio. Los fines de semana con un curso son mis mejores fines de semana.',pillar:'Aprendizaje'},
+  ],li:[
+    {type:'autoridad',topic:'Las métricas que los clientes piden vs las que realmente miden resultados de negocio'},
+    {type:'estrategia',topic:'Cómo crear una estrategia de contenidos cuando tienes equipo y poco tiempo libre'},
+    {type:'opinion',topic:'El cliente frustrado de otra agencia es, de lejos, mi mejor cliente. Te explico por qué.'},
+    {type:'historia',topic:'150K con equipo de 8: la estructura, los procesos y todo lo que no se ve desde fuera'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Por qué la confianza es la base del marketing — y cómo se construye online en 2026',pillar:'Autoridad'},
+    {type:'carrusel',topic:'CRM inteligente para PYMEs: herramientas de IA para no perder ni un cliente',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'La comunidad que eliges es familia. Eso busca también tu cliente cuando te contrata.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'La propuesta de valor que te diferencia vs la que suena igual que todas las demás'},
+    {type:'estrategia',topic:'El dossier diagnóstico como herramienta de ventas: cómo abre la mente del cliente'},
+    {type:'opinion',topic:'Sin la cara visible del empresario, la marca pierde el 80% de su poder de conexión.'},
+    {type:'historia',topic:'Qué pasa cuando el equipo se siente parte de la empresa — y los resultados que genera'},
+  ]},
+],'2026-06':[
+  {ig:[
+    {type:'reel',topic:'3 preguntas que deberías hacer antes de contratar cualquier agencia de marketing',pillar:'Autoridad'},
+    {type:'carrusel',topic:'IA para reuniones sin perder el hilo: Otter.ai, Fireflies, Notion — comparativa',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'El día que dije: si me sale esto, voy con todas. Sin miedo. Sin red de seguridad.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'El marketing sin estrategia es gasto. El marketing con estrategia es inversión medible.'},
+    {type:'estrategia',topic:'Cómo preparar un briefing de marca que no desperdicie presupuesto ni tiempo de equipo'},
+    {type:'opinion',topic:'Publicar todos los días sin objetivo es peor que no publicar nada. Con datos lo demuestro.'},
+    {type:'historia',topic:'3 años de agencia: lo que repetiría sin dudar y lo que haría completamente diferente'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'SEO en 2026: lo que ya no funciona y lo que está dando resultados reales ahora mismo',pillar:'SEO & Visibilidad'},
+    {type:'carrusel',topic:'Stack completo de herramientas de una agencia de marketing boutique en 2026',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Gracias al equipo que sigue cuando yo no estoy. Por eso me obsesioné en construirlo bien.',pillar:'Equipo & Cultura'},
+  ],li:[
+    {type:'autoridad',topic:'SEO orgánico en 2026: cambios de algoritmo y cómo la PYME debe adaptarse ya'},
+    {type:'estrategia',topic:'Por qué las PYMEs descuidan Google My Business — y cómo aprovecharlo esta semana'},
+    {type:'opinion',topic:'El cliente que llega por SEO no regatea. Ya decidió contratarte antes de llamar.'},
+    {type:'historia',topic:'Cuando el equipo entiende el negocio del cliente, la calidad del trabajo cambia de raíz'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Marca personal para empresarios: cómo empezar aunque la cámara te dé pánico total',pillar:'Identidad Digital'},
+    {type:'carrusel',topic:'5 prompts de ChatGPT para analizar tu competencia en menos de 30 minutos',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Me daba pánico hablar en público. La voz muy bajita. El miedo al rechazo. Y aquí estoy.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'La marca personal del CEO: el activo más infrautilizado de la empresa española en 2026'},
+    {type:'estrategia',topic:'Cómo superar el miedo a la cámara en 4 pasos reales — sin teatro y sin artificios'},
+    {type:'opinion',topic:'Lo personal y lo profesional ya no se separan en el marketing moderno. Es buena noticia.'},
+    {type:'historia',topic:'Cómo convertimos el miedo a exponerse de nuestros clientes en su mayor activo de marca'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Caso real: leads triplicados en 90 días para empresa de reformas sin más presupuesto',pillar:'Casos de Éxito'},
+    {type:'carrusel',topic:'De la idea al calendario de contenidos en 20 minutos: el flujo con IA que usamos',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'El equilibrio no es un estado que se alcanza. Es una práctica diaria que eliges cada mañana.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Caso de éxito: empresa de reformas, 3 canales, 90 días, leads triplicados — los datos'},
+    {type:'estrategia',topic:'De la sesión diagnóstico al plan de acción: así trabajamos exactamente en LMNHL'},
+    {type:'opinion',topic:'El modelo agencia boutique: más rentable, más humano y más efectivo para la PYME española.'},
+    {type:'historia',topic:'Cierre de Q2: lo que aprendimos, lo que corregimos y lo que no cambiaríamos por nada'},
+  ]},
+],'2026-07':[
+  {ig:[
+    {type:'reel',topic:'Verano y marketing: cómo mantener la presencia digital sin quemarte antes de agosto',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'IA para analizar las métricas del primer semestre en menos de 10 minutos',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Me permito parar. Y cada vez que lo hago, vuelvo con más claridad y mejores ideas.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Balance del primer semestre: qué ha funcionado en marketing digital para las PYMEs'},
+    {type:'estrategia',topic:'Cómo planificar el Q3 sin que el verano deshaga la estrategia de contenidos'},
+    {type:'opinion',topic:'El empresario que no para nunca acaba pagando el precio. Parar también es estrategia.'},
+    {type:'historia',topic:'Lo que aprendí en el primer semestre de 2026 aplicando IA a nuestra agencia'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Captación en verano: 3 estrategias que funcionan cuando todo el mundo baja la guardia',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'Email marketing con IA: automatiza newsletters sin perder tu voz ni tu personalidad',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Cuando empecé, mi madre me dijo que estaba loca. Hoy le agradezco que me lo dijera.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Email marketing en 2026: por qué sigue siendo el canal con mejor ROI para las PYMEs'},
+    {type:'estrategia',topic:'Cómo usar julio para consolidar procesos y llegar a septiembre con fuerza'},
+    {type:'opinion',topic:'La empresa que no invierte en su marca en verano llega a septiembre completamente invisible.'},
+    {type:'historia',topic:'El valor de tener socia: asociarme con alguien de otro país conocida online fue lo mejor'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'¿Qué puedes automatizar antes de agosto para que el negocio no dependa de ti?',pillar:'IA & Productividad'},
+    {type:'carrusel',topic:'Google Ads para PYMEs: cuándo invertir, cuánto y cómo medir si funciona de verdad',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Este año confié en mi intuición. Y fue la mejor decisión estratégica que tomé en 2026.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Google Ads en 2026: estructura de campaña, presupuesto mínimo y métricas que importan'},
+    {type:'estrategia',topic:'Automatización antes de agosto: qué preparar para que el negocio no pare contigo'},
+    {type:'opinion',topic:'Confiar en tu intuición es también una competencia profesional. Entrenarla, igual.'},
+    {type:'historia',topic:'Cómo el equipo gestiona los clientes cuando yo no estoy — y por qué eso lo cambió todo'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Preparando septiembre: cómo volver de vacaciones con estrategia y no con pánico',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'Funnel de captación digital para servicios profesionales: paso a paso con herramientas',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Años construyendo esto. Y cada año entiendo mejor que el proceso es el destino.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'El checklist de marketing para la vuelta al cole empresarial de septiembre'},
+    {type:'estrategia',topic:'El funnel para servicios profesionales B2B en España — lo que realmente convierte'},
+    {type:'opinion',topic:'El empresario que planifica en julio llega a septiembre con agenda llena. El que no, empieza de cero.'},
+    {type:'historia',topic:'4 años de LMNHL: dónde estoy, dónde quiero estar y lo que el camino me ha enseñado'},
+  ]},
+],'2026-08':[
+  {ig:[
+    {type:'reel',topic:'5 contenidos evergreen que puedes reutilizar cada verano y siempre funcionan',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'Herramientas de IA que trabajan mientras tú descansas: automatización real',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Descansar no es perder el tiempo. Es cargar el motor que te mueve el resto del año.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'El contenido evergreen: qué es, por qué importa y cómo crear el tuyo esta semana'},
+    {type:'estrategia',topic:'Cómo programar un mes de contenido en un día — el workflow que usamos en LMNHL'},
+    {type:'opinion',topic:'El verano no es excusa para desaparecer del radar de tus clientes potenciales.'},
+    {type:'historia',topic:'Lo que aprendí sobre delegar en los primeros veranos con equipo propio'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Qué hace la competencia en agosto mientras tú descansas — y cómo contrarrestarlo',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'5 tipos de contenido que puedes preparar en julio para publicar todo agosto',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Hay veranos que te enseñan más que todo un año de trabajo intenso. Este fue uno de esos.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Estrategia de contenidos en piloto automático: cómo programar agosto sin perder calidad'},
+    {type:'estrategia',topic:'El batch content: grabar y escribir todo el mes en una sola semana con IA'},
+    {type:'opinion',topic:'Las empresas que mantienen su presencia en agosto tienen una ventaja brutal en septiembre.'},
+    {type:'historia',topic:'Reflexión de mitad de año: dónde está LMNHL y qué viene en el segundo semestre'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'3 cosas que puedes mejorar en tu marca este agosto para llegar fuerte a septiembre',pillar:'Identidad LMNHL'},
+    {type:'carrusel',topic:'Checklist de marca para el segundo semestre: 10 puntos que debes revisar ya',pillar:'Identidad Digital'},
+    {type:'reflexion',topic:'El agradecimiento diario no es moda. Es la práctica que me mantiene en pie en los días duros.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Checklist de presencia digital para el segundo semestre: 10 puntos críticos'},
+    {type:'estrategia',topic:'Cómo usar agosto para rediseñar tu propuesta de valor antes de la campaña de Q4'},
+    {type:'opinion',topic:'La empresa que llega a septiembre sin haber revisado su marca llega tarde a todo.'},
+    {type:'historia',topic:'Mis rituales de desconexión — y por qué tardé tanto en aprender a tenerlos'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Septiembre ya llega: el único vídeo de marketing que necesitas ver antes del 1 de sep',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'Cómo preparar tu calendario de contenidos de Q4 en una tarde con ayuda de IA',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'La intuición, la familia que eliges y el equipo que construyes. Eso es lo que queda.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'El sprint de preparación de septiembre: todo lo que debes tener listo antes del día 1'},
+    {type:'estrategia',topic:'Planificación Q4: cómo sacarle el máximo partido a los últimos 3 meses del año'},
+    {type:'opinion',topic:'Agosto es el mes en que las PYMEs más listas se adelantan. ¿Estás siendo una de ellas?'},
+    {type:'historia',topic:'Por qué el descanso de agosto me ha dado siempre las mejores ideas de negocio'},
+  ]},
+],'2026-09':[
+  {ig:[
+    {type:'reel',topic:'Bienvenida a septiembre: el mes en que las empresas vuelven o se quedan atrás',pillar:'Autoridad'},
+    {type:'carrusel',topic:'El stack de IA para la vuelta: herramientas que debes tener activas desde ya',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Septiembre huele a oportunidad. Siempre. Cada año lo confirmo.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'La vuelta al cole empresarial: qué revisar en marketing antes de arrancar septiembre'},
+    {type:'estrategia',topic:'Cómo activar la captación digital después del verano en menos de una semana'},
+    {type:'opinion',topic:'Septiembre no perdona. O llegas preparado o pasas los próximos 3 meses recuperándote.'},
+    {type:'historia',topic:'Cada septiembre de LMNHL ha sido distinto. Este es el más ambicioso de todos.'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Cómo conseguir los primeros 3 clientes online si tu negocio parte de cero en septiembre',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Zapier + Make + IA: automatiza los procesos de captación de tu negocio sin código',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Soy compañera antes que jefa. No sé si eso está bien o mal. Lo que sé es que funciona.',pillar:'Liderazgo'},
+  ],li:[
+    {type:'autoridad',topic:'Lead magnet en 2026: qué funciona, qué ya no funciona y cómo crear el tuyo'},
+    {type:'estrategia',topic:'El sistema de captación que usamos en LMNHL para cerrar clientes de forma recurrente'},
+    {type:'opinion',topic:'Un equipo que no entiende al cliente no puede venderle aunque tenga el mejor producto.'},
+    {type:'historia',topic:'Cómo pasé de tener miedo a contratar a liderar un equipo de 8 personas con orgullo'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'LinkedIn para empresarios que odian LinkedIn: cómo publicar sin morir en el intento',pillar:'Redes Sociales'},
+    {type:'carrusel',topic:'Perplexity AI, ChatGPT y Google Gemini: cuál usar para investigación de mercado',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Cada cliente que llega frustrado de otra agencia es una lección sobre lo que no se debe hacer.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'LinkedIn en 2026: la guía real para empresarios y directivos que quieren resultados'},
+    {type:'estrategia',topic:'Cómo crear un perfil de LinkedIn que capte clientes sin que tengas que perseguir a nadie'},
+    {type:'opinion',topic:'LinkedIn no es para buscar trabajo. Es para que los clientes idóneos te encuentren a ti.'},
+    {type:'historia',topic:'Por qué empecé a apostar por la marca personal cuando todos me decían que no lo hiciera'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Herramienta secreta: cómo uso la IA para preparar las reuniones con clientes',pillar:'IA & Productividad'},
+    {type:'carrusel',topic:'El antes y el después de una estrategia de marca: 5 casos reales de transformación',pillar:'Casos de Éxito'},
+    {type:'reflexion',topic:'El éxito del cliente es mi éxito. Cuando les va bien, celebro como si fuera mío. Porque lo es.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'Cómo medir el ROI de tu estrategia de contenidos y justificarlo ante un CEO'},
+    {type:'estrategia',topic:'El customer journey de la PYME española: por dónde entra tu cliente y por dónde se va'},
+    {type:'opinion',topic:'El primer lead de un cliente nuevo lo celebramos en equipo. Eso cambia la cultura de trabajo.'},
+    {type:'historia',topic:'4 años construyendo LMNHL: el balance real de lo que ha funcionado y lo que no'},
+  ]},
+],'2026-10':[
+  {ig:[
+    {type:'reel',topic:'5 errores de marketing que las PYMEs siguen cometiendo en 2026 sin saberlo',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Notion para empresarios: el sistema de gestión que uso para no perderme nada',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Permitirme venirme abajo fue lo que me permitió volver a subir. Sin eso no hay resiliencia.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Los 5 errores de estrategia digital que más cuestan dinero a la PYME española en 2026'},
+    {type:'estrategia',topic:'Cómo documentar los procesos de tu agencia para que funcionen sin que estés tú'},
+    {type:'opinion',topic:'Querer abarcarlo todo es el mayor enemigo del crecimiento real. Lo aprendí a las malas.'},
+    {type:'historia',topic:'Cuando heredé la empresa de mi padre: el reto más inesperado de mi carrera'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Qué es un audit de marca y por qué tu empresa lo necesita antes de fin de año',pillar:'Identidad Digital'},
+    {type:'carrusel',topic:'Cómo usar Canva AI + ChatGPT para producir contenido visual en la mitad de tiempo',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Hay momentos en que lo más estratégico que puedes hacer es parar y pensar. No actuar.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Auditoría de marca digital: qué revisar antes de cerrar el año para llegar fuerte a enero'},
+    {type:'estrategia',topic:'El plan de contenidos de noviembre y diciembre: cómo prepararlo esta semana'},
+    {type:'opinion',topic:'Las empresas que hacen balance en octubre tienen el Q4 ganado. Las que no, improvisan.'},
+    {type:'historia',topic:'Lo que me enseñó una empresa familiar sobre los límites que hay que poner en el negocio'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Cómo crear tu propuesta de valor en 5 minutos con IA — y por qué esto no lo hace la IA sola',pillar:'Autoridad'},
+    {type:'carrusel',topic:'Presupuesto de marketing para PYMEs en 2027: cómo calcularlo bien ahora',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Construir una agencia con valores es más difícil que construir una agencia con facturación.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'Cómo calcular el presupuesto de marketing para 2027: metodología paso a paso'},
+    {type:'estrategia',topic:'Planificación 2027: qué objetivos fijar, cómo medirlos y cuándo revisarlos'},
+    {type:'opinion',topic:'El plan de marketing que no tiene KPIs no es un plan. Es un deseo.'},
+    {type:'historia',topic:'Cómo construí los valores de LMNHL — y por qué los comunico antes de hablar de servicios'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'3 tipos de contenido que siempre generan conversaciones y nuevos seguidores reales',pillar:'Redes Sociales'},
+    {type:'carrusel',topic:'Guía completa de formatos en Instagram 2026: qué funciona y qué ha dejado de funcionar',pillar:'Redes Sociales'},
+    {type:'reflexion',topic:'El miedo al rechazo sigue estando. Pero ya no manda. Esa es la diferencia.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Instagram en 2026 para negocios B2B: qué sí funciona y qué ya es tiempo perdido'},
+    {type:'estrategia',topic:'Cómo convertir seguidores de Instagram en leads cualificados para tu negocio B2B'},
+    {type:'opinion',topic:'La empresa que solo publica en Instagram en 2026 sin LinkedIn está dejando dinero encima de la mesa.'},
+    {type:'historia',topic:'Cómo nació la decisión de reforzar la marca personal de Sheila en redes: el momento exacto'},
+  ]},
+],'2026-11':[
+  {ig:[
+    {type:'reel',topic:'Noviembre es el mes de las decisiones de compra B2B: ¿estás visible para tu cliente?',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'IA para cerrar ventas: seguimiento sin perder el toque humano',pillar:'IA & Productividad'},
+    {type:'reflexion',topic:'Los mejores clientes no vienen por lo que haces. Vienen por cómo eres cuando lo haces.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'El ciclo de compra B2B en España en 2026: cómo influir en la decisión antes de la reunión'},
+    {type:'estrategia',topic:'Cómo activar la captación en noviembre para cerrar contratos antes del 31 de diciembre'},
+    {type:'opinion',topic:'El Black Friday es para el B2C. Para el B2B, noviembre es el mes de los contratos anuales.'},
+    {type:'historia',topic:'El cliente que más me ha enseñado — y lo que cambié en LMNHL después de trabajar con él'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Cómo preparar una propuesta de marketing que el cliente no pueda rechazar',pillar:'Servicios LMNHL'},
+    {type:'carrusel',topic:'WhatsApp Business + IA: el canal más infravalorado para convertir leads en clientes',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'La cercanía y la transparencia no son valores de venta. Son la forma en que decidí vivir mi negocio.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'WhatsApp Business en estrategia digital B2B: cuándo usarlo y cómo sin resultar intrusivo'},
+    {type:'estrategia',topic:'La propuesta de marketing perfecta: estructura, tono y los errores que la echan a perder'},
+    {type:'opinion',topic:'La cercanía con el cliente no es debilidad. Es la ventaja competitiva más difícil de copiar.'},
+    {type:'historia',topic:'Cómo gestioné mi primer año teniendo tres empresas simultáneas — y qué precio pagué'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'IA generativa en marketing: dónde poner el límite entre automatizar y perder la voz',pillar:'IA & Productividad'},
+    {type:'carrusel',topic:'Plan de contenidos de diciembre: temas, formatos y fechas clave para no improvisar',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Hacer pedagogía con un cliente que no sabe nada es trabajo. Hacerlo con uno que desconfía es imposible.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'IA y voz de marca: cómo usar herramientas generativas sin perder tu identidad'},
+    {type:'estrategia',topic:'El plan de diciembre: cómo cerrar contratos de retainer anuales antes del 20 de diciembre'},
+    {type:'opinion',topic:'La IA que no parte de una estrategia humana no es eficiencia. Es ruido bien producido.'},
+    {type:'historia',topic:'Los 3 valores que construyen LMNHL — y cómo los he aplicado en los momentos más difíciles'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Lo que cambiaría si empezara LMNHL hoy sabiendo lo que sé ahora',pillar:'Historia Personal'},
+    {type:'carrusel',topic:'El año en marketing digital: las 10 tendencias que definieron 2026 para las PYMEs',pillar:'Autoridad'},
+    {type:'reflexion',topic:'Construir con propósito es más lento. Pero lo que construyes dura mucho más.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'Las 10 tendencias de marketing digital que han marcado 2026 para la PYME española'},
+    {type:'estrategia',topic:'Cómo cerrar el año en marketing con métricas reales y sin auto-engaños'},
+    {type:'opinion',topic:'Prefiero crecer despacio con equipo comprometido que rápido con personas que no creen en el proyecto.'},
+    {type:'historia',topic:'Diciembre a la vista: balance personal y profesional del año más intenso de LMNHL'},
+  ]},
+],'2026-12':[
+  {ig:[
+    {type:'reel',topic:'Diciembre no es para abandonar el marketing: es para sembrar enero con intención',pillar:'Estrategia Digital'},
+    {type:'carrusel',topic:'Las herramientas de IA que van a dominar el marketing en 2027: anticípate ahora',pillar:'IA & Herramientas'},
+    {type:'reflexion',topic:'Todas las noches busco algo que agradecer. Diciembre es el mes en que más encuentro.',pillar:'Vida & Equilibrio'},
+  ],li:[
+    {type:'autoridad',topic:'Tendencias de marketing digital para 2027: lo que ya debes estar preparando hoy'},
+    {type:'estrategia',topic:'El plan de captación de enero: cómo construirlo en diciembre sin improvisar en año nuevo'},
+    {type:'opinion',topic:'Las empresas que se despiden bien de sus clientes en diciembre no necesitan captarlos en enero.'},
+    {type:'historia',topic:'2026 en LMNHL: lo que construimos, lo que rompimos y lo que nos llevamos para siempre'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Cómo hacer el balance de tu estrategia de contenidos de 2026 en 20 minutos con IA',pillar:'IA & Productividad'},
+    {type:'carrusel',topic:'Objetivos de marketing para 2027: cómo definirlos, priorizarlos y medirlos de verdad',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'Un año más eligiendo con quién crecer. Gracias a cada cliente, equipo y comunidad.',pillar:'Identidad LMNHL'},
+  ],li:[
+    {type:'autoridad',topic:'Cómo fijar los objetivos de marketing para 2027: metodología OKR adaptada a la PYME'},
+    {type:'estrategia',topic:'Planificación de redes sociales para 2027: qué plataformas, qué frecuencia, qué equipo'},
+    {type:'opinion',topic:'El empresario que no revisa sus KPIs en diciembre no está listo para crecer en enero.'},
+    {type:'historia',topic:'Mi reto para 2027: lo que voy a hacer diferente y lo que no cambiaría bajo ningún concepto'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Los 5 posts que más funcionaron en LMNHL en 2026 — y qué aprendemos de cada uno',pillar:'Identidad LMNHL'},
+    {type:'carrusel',topic:'Plantillas de contenido que puedes usar en enero sin empezar de cero',pillar:'Estrategia Digital'},
+    {type:'reflexion',topic:'El proceso es el destino. Eso es lo que 2026 me ha confirmado definitivamente.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Las 5 lecciones de marketing que 2026 nos ha dejado a los que trabajamos con PYMEs'},
+    {type:'estrategia',topic:'El kit de arranque de enero: todo lo que tu equipo necesita para empezar 2027 con fuerza'},
+    {type:'opinion',topic:'Terminar el año con gratitud no es postureo. Es la única actitud que te permite empezar el siguiente mejor.'},
+    {type:'historia',topic:'Carta abierta a la Sheila de hace 4 años: lo que hoy sé y entonces no podía imaginar'},
+  ]},
+  {ig:[
+    {type:'reel',topic:'Feliz 2027: lo que LMNHL trae el año que viene para sus clientes y comunidad',pillar:'Identidad LMNHL'},
+    {type:'carrusel',topic:'Predicciones de marketing digital para 2027: lo que ya está pasando y no puedes ignorar',pillar:'Autoridad'},
+    {type:'reflexion',topic:'Emprender es elegir cada día construir algo tuyo. Con miedo o sin él. Yo lo volvería a elegir.',pillar:'Historia Personal'},
+  ],li:[
+    {type:'autoridad',topic:'Las predicciones de marketing digital para 2027 que ya están siendo realidad hoy'},
+    {type:'estrategia',topic:'Cómo despedir el año con tus clientes de retainer y asegurar la renovación para 2027'},
+    {type:'opinion',topic:'Los mejores clientes de enero son los que empezaste a cultivar en diciembre. Sin excepción.'},
+    {type:'historia',topic:'Gracias: a los clientes, al equipo, a la comunidad y a los que dijeron que no se podía'},
+  ]},
+],
+};
+
+const LS='lmnhl26_';
+
+function emptyPost(type){ return {type,topic:'',text:'',link:'',date:'',status:'pendiente'}; }
+
+function buildDefault(){
+  const s={};
+  for(const m of MONTHS){
+    s[m.key]=PLAN[m.key].map(w=>({
+      ig:w.ig.map(c=>({topic:c.topic,text:'',link:'',date:'',status:'pendiente'})),
+      li:w.li.map(c=>({topic:c.topic,text:'',link:'',date:'',status:'pendiente'})),
+      customIg:[],
+      customLi:[],
+    }));
+  }
+  return s;
+}
+
+function loadLS(){
+  const d=buildDefault();
+  for(const m of MONTHS){
+    try{
+      const r=localStorage.getItem(LS+m.key);
+      if(r){
+        const p=JSON.parse(r);
+        d[m.key]=p.map((w,wi)=>({
+          ig:(w.ig||[]).map((s,i)=>({topic:s.topic!==undefined?s.topic:(PLAN[m.key][wi]?.ig[i]?.topic||''),text:s.text||'',link:s.link||'',date:s.date||'',status:s.status||'pendiente'})),
+          li:(w.li||[]).map((s,i)=>({topic:s.topic!==undefined?s.topic:(PLAN[m.key][wi]?.li[i]?.topic||''),text:s.text||'',link:s.link||'',date:s.date||'',status:s.status||'pendiente'})),
+          customIg:w.customIg||[],
+          customLi:w.customLi||[],
+        }));
+      }
+    }catch(e){}
+  }
+  return d;
+}
+
+function saveLS(state){
+  for(const m of MONTHS){
+    try{localStorage.setItem(LS+m.key,JSON.stringify(state[m.key]));}catch(e){}
+  }
+}
+
+function AddButton({plat,onAdd}){
+  const[open,setOpen]=useState(false);
+  const ref=useRef(null);
+  useEffect(()=>{
+    function h(e){if(ref.current&&!ref.current.contains(e.target))setOpen(false);}
+    document.addEventListener('mousedown',h);
+    return()=>document.removeEventListener('mousedown',h);
+  },[]);
+  return React.createElement('div',{className:'add-post-wrap',ref},
+    React.createElement('button',{
+      className:'add-post-btn '+(plat==='ig'?'ig':''),
+      onClick:()=>setOpen(o=>!o)
+    },
+      React.createElement('span',{className:'add-icon'},'+'),
+      'Nueva publicación'
+    ),
+    open&&React.createElement('div',{className:'dropdown '+(plat==='li'?'right':'')},
+      React.createElement('div',{className:'dd-title'},'Tipo de publicación'),
+      ADD_TYPES.map(o=>React.createElement('button',{
+        key:o.type,className:'dd-opt',
+        onClick:()=>{onAdd(o.type);setOpen(false);}
+      },
+        React.createElement('span',{className:'dd-dot',style:{background:o.dot}}),
+        o.label
+      ))
+    )
+  );
+}
+
+function PostCard({planCfg,data,onUpdate,onDelete}){
+  const type=planCfg?planCfg.type:(data.type||'post');
+  const t=TC[type]||TC.post;
+  const s=SC[data.status]||SC.pendiente;
+  const pillar=planCfg?planCfg.pillar:(data.pillar||'');
+  return React.createElement('div',{className:'card',style:{borderLeftColor:t.border}},
+    React.createElement('div',{className:'card-top'},
+      React.createElement('div',{className:'card-badges'},
+        React.createElement('span',{className:'type-badge',style:{color:t.color,background:t.bg}},t.label),
+        pillar&&React.createElement('span',{className:'pillar-tag'},pillar)
+      ),
+      React.createElement('div',{style:{display:'flex',gap:6,alignItems:'center'}},
+        React.createElement('button',{className:'st-btn',style:{background:s.bg,color:s.color,borderColor:s.bc},onClick:()=>onUpdate('status',s.next)},s.label),
+        onDelete&&React.createElement('button',{className:'del-btn',onClick:onDelete},'✕')
+      )
+    ),
+    React.createElement('div',null,
+      React.createElement('div',{className:'topic-hint'},'Tema — editable'),
+      React.createElement('input',{
+        className:'topic-input',
+        type:'text',
+        value:data.topic,
+        onChange:e=>onUpdate('topic',e.target.value),
+        placeholder:'Escribe o edita el tema del post...'
+      })
+    ),
+    React.createElement('textarea',{className:'post-textarea',value:data.text,onChange:e=>onUpdate('text',e.target.value),placeholder:'Texto del post...'}),
+    React.createElement('div',{style:{display:'flex',gap:10}},
+      React.createElement('div',{style:{flex:'0 0 160px'}},
+        React.createElement('label',{className:'date-label'},'Día de publicación'),
+        React.createElement('input',{className:'date-input',type:'date',value:data.date||'',onChange:e=>onUpdate('date',e.target.value)})
+      ),
+      React.createElement('div',{style:{flex:1}},
+        React.createElement('label',{className:'date-label'},'Enlace a carpeta / vídeo / diseño'),
+        React.createElement('input',{className:'link-input',type:'text',value:data.link,onChange:e=>onUpdate('link',e.target.value),placeholder:'https://drive.google.com/...'})
+      )
+    )
+  );
+}
+
+function WeekSection({mk,wi,weekLabel,planWeek,dataWeek,onUpdate,onUpdateTopic,onAddCustom,onUpdateCustom,onDeleteCustom,defOpen}){
+  const[open,setOpen]=useState(defOpen);
+  const allData=[...dataWeek.ig,...dataWeek.li,...(dataWeek.customIg||[]),...(dataWeek.customLi||[])];
+  const apr=allData.filter(d=>d.status==='aprobado').length;
+  const rev=allData.filter(d=>d.status==='revision').length;
+  return React.createElement('div',{className:'week'},
+    React.createElement('button',{className:'week-hdr '+(open?'on':''),onClick:()=>setOpen(o=>!o)},
+      React.createElement('div',{className:'wk-left'},
+        React.createElement('span',{className:'wk-label'},weekLabel),
+        React.createElement('div',{className:'wk-badges'},
+          apr>0&&React.createElement('span',{className:'wbadge apr'},apr+' aprobados'),
+          rev>0&&React.createElement('span',{className:'wbadge rev'},rev+' en revisión'),
+          React.createElement('span',{className:'wbadge tot'},(planWeek.ig.length+planWeek.li.length+(dataWeek.customIg||[]).length+(dataWeek.customLi||[]).length)+' posts')
+        )
+      ),
+      React.createElement('span',{className:'wk-arrow'},open?'▲':'▼')
+    ),
+    open&&React.createElement('div',{className:'week-body'},
+      React.createElement('div',{className:'platform'},
+        React.createElement('div',{className:'plat-hdr'},
+          React.createElement('span',{style:{fontSize:14,marginRight:4}},'📸'),
+          React.createElement('span',{className:'plat-name'},'Instagram'),
+          React.createElement('span',{className:'plat-count'},(planWeek.ig.length+(dataWeek.customIg||[]).length)+' publicaciones')
+        ),
+        planWeek.ig.map((cfg,i)=>React.createElement(PostCard,{key:'ig'+i,planCfg:cfg,data:{...dataWeek.ig[i],topic:dataWeek.ig[i].topic!==undefined?dataWeek.ig[i].topic:cfg.topic},onUpdate:(f,v)=>onUpdate('ig',i,f,v)})),
+        (dataWeek.customIg||[]).map((item,i)=>React.createElement(PostCard,{key:'cig'+i,planCfg:null,data:item,onUpdate:(f,v)=>onUpdateCustom('ig',i,f,v),onDelete:()=>onDeleteCustom('ig',i)})),
+        React.createElement(AddButton,{plat:'ig',onAdd:type=>onAddCustom('ig',type)})
+      ),
+      React.createElement('div',{className:'platform'},
+        React.createElement('div',{className:'plat-hdr li'},
+          React.createElement('span',{style:{fontSize:14,marginRight:4}},'💼'),
+          React.createElement('span',{className:'plat-name',style:{color:'#582D81'}},'LinkedIn'),
+          React.createElement('span',{className:'plat-count'},(planWeek.li.length+(dataWeek.customLi||[]).length)+' publicaciones')
+        ),
+        planWeek.li.map((cfg,i)=>React.createElement(PostCard,{key:'li'+i,planCfg:cfg,data:{...dataWeek.li[i],topic:dataWeek.li[i].topic!==undefined?dataWeek.li[i].topic:cfg.topic},onUpdate:(f,v)=>onUpdate('li',i,f,v)})),
+        (dataWeek.customLi||[]).map((item,i)=>React.createElement(PostCard,{key:'cli'+i,planCfg:null,data:item,onUpdate:(f,v)=>onUpdateCustom('li',i,f,v),onDelete:()=>onDeleteCustom('li',i)})),
+        React.createElement(AddButton,{plat:'li',onAdd:type=>onAddCustom('li',type)})
+      )
+    )
+  );
+}
+
+function App(){
+  const[month,setMonth]=useState('2026-04');
+  const[state,setState]=useState(()=>loadLS());
+  const[saved,setSaved]=useState(true);
+  const timer=useRef(null);
+
+  useEffect(()=>{
+    setSaved(false);
+    if(timer.current)clearTimeout(timer.current);
+    timer.current=setTimeout(()=>{saveLS(state);setSaved(true);},800);
+    return()=>clearTimeout(timer.current);
+  },[state]);
+
+  const update=useCallback((mk,wi,plat,pi,field,val)=>{
+    setState(prev=>{
+      const n=JSON.parse(JSON.stringify(prev));
+      if(n[mk]&&n[mk][wi]&&n[mk][wi][plat]&&n[mk][wi][plat][pi])n[mk][wi][plat][pi][field]=val;
+      return n;
+    });
+  },[]);
+
+  const addCustom=useCallback((mk,wi,plat,type)=>{
+    setState(prev=>{
+      const n=JSON.parse(JSON.stringify(prev));
+      const k=plat==='ig'?'customIg':'customLi';
+      if(!n[mk][wi][k])n[mk][wi][k]=[];
+      n[mk][wi][k].push(emptyPost(type));
+      return n;
+    });
+  },[]);
+
+  const updateCustom=useCallback((mk,wi,plat,ci,field,val)=>{
+    setState(prev=>{
+      const n=JSON.parse(JSON.stringify(prev));
+      const k=plat==='ig'?'customIg':'customLi';
+      if(n[mk][wi][k]&&n[mk][wi][k][ci])n[mk][wi][k][ci][field]=val;
+      return n;
+    });
+  },[]);
+
+  const deleteCustom=useCallback((mk,wi,plat,ci)=>{
+    setState(prev=>{
+      const n=JSON.parse(JSON.stringify(prev));
+      const k=plat==='ig'?'customIg':'customLi';
+      if(n[mk][wi][k])n[mk][wi][k].splice(ci,1);
+      return n;
+    });
+  },[]);
+
+  const mData=state[month]||[];
+  const all=mData.flatMap(w=>[...w.ig,...w.li,...(w.customIg||[]),...(w.customLi||[])]);
+  const apr=all.filter(p=>p.status==='aprobado').length;
+  const rev=all.filter(p=>p.status==='revision').length;
+  const pct=all.length>0?Math.round((apr/all.length)*100):0;
+  const gAll=Object.values(state).flatMap(mw=>mw.flatMap(w=>[...w.ig,...w.li,...(w.customIg||[]),...(w.customLi||[])]));
+  const gApr=gAll.filter(p=>p.status==='aprobado').length;
+  const mo=MONTHS.find(m=>m.key===month);
+
+  return React.createElement('div',null,
+    React.createElement('div',{className:'hdr'},
+      React.createElement('div',{className:'hdr-top'},
+        React.createElement('div',null,
+          React.createElement('div',{className:'hdr-eyebrow'},'Los Martes No Hay Luna'),
+          React.createElement('div',{className:'hdr-title'},'Plan de Contenidos 2026 — Abril a Diciembre')
+        ),
+        React.createElement('div',{className:'hdr-stats'},
+          React.createElement('div',{className:'stat'},React.createElement('div',{className:'stat-n',style:{color:'#4ade80'}},apr),React.createElement('div',{className:'stat-l'},'Aprobados mes')),
+          React.createElement('div',{className:'stat'},React.createElement('div',{className:'stat-n',style:{color:'#fbbf24'}},rev),React.createElement('div',{className:'stat-l'},'En revisión')),
+          React.createElement('div',{className:'stat'},React.createElement('div',{className:'stat-n',style:{color:'#87B229'}},gApr),React.createElement('div',{className:'stat-l'},'Total aprobados')),
+          React.createElement('span',{className:'save-badge',style:{color:saved?'#4ade80':'#fbbf24'}},saved?'● Guardado':'● Guardando...')
+        )
+      ),
+      React.createElement('div',{className:'tabs'},
+        MONTHS.map(m=>React.createElement('button',{key:m.key,className:'tab '+(m.key===month?'on':''),onClick:()=>setMonth(m.key)},m.name))
+      )
+    ),
+    React.createElement('div',{className:'prog'},React.createElement('div',{className:'prog-bar',style:{width:pct+'%'}})),
+    React.createElement('div',{className:'body'},
+      React.createElement('div',{className:'mth-hd'},
+        React.createElement('div',{className:'mth-accent'}),
+        React.createElement('div',null,
+          React.createElement('div',{className:'mth-name'},mo.name+' 2026'),
+          React.createElement('div',{className:'mth-sub'},pct+'% completado · '+(mo.weeks.length*3)+' posts IG base · '+(mo.weeks.length*4)+' posts LI base')
+        )
+      ),
+      mo.weeks.map((wl,wi)=>React.createElement(WeekSection,{
+        key:wi,mk:month,wi,
+        weekLabel:'Semana '+(wi+1)+' — '+wl,
+        planWeek:PLAN[month][wi],
+        dataWeek:mData[wi]||{ig:[],li:[],customIg:[],customLi:[]},
+        onUpdate:(plat,pi,f,v)=>update(month,wi,plat,pi,f,v),
+        onAddCustom:(plat,type)=>addCustom(month,wi,plat,type),
+        onUpdateCustom:(plat,ci,f,v)=>updateCustom(month,wi,plat,ci,f,v),
+        onDeleteCustom:(plat,ci)=>deleteCustom(month,wi,plat,ci),
+        defOpen:wi===0,
+      })),
+      React.createElement('div',{className:'footer'},
+        React.createElement('span',{className:'ft-l'},'LMNHL · Plan de Contenidos Abr–Dic 2026 · 9 meses'),
+        React.createElement('span',{className:'ft-r'},'IG: Reel + Carrusel + Reflexión · LI: Autoridad + Estrategia + Opinión + Historia')
+      )
+    )
+  );
+}
+
+ReactDOM.render(React.createElement(App),document.getElementById('root'));
+</script>
+</body>
+</html>
